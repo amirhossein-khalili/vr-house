@@ -31,8 +31,6 @@ git clone [https://github.com/amirhossein-khalili/vr-house.git](https://github.c
 cd vr-house
 ```
 
-````
-
 ### 2. Environment Variables
 
 Create an `.env` file from the `example.env` file and update it with your specific configuration.
@@ -128,4 +126,3 @@ If your project includes a backend API, you can test its endpoints using Postman
     - Upload the Postman collection JSON file.
 3.  **Configure Environment (if needed):** The collection might require a Postman environment to be set up with variables like `baseURL`. _<-- Specify if an environment setup is needed and provide details or an example environment file. -->_
 4.  **Run Requests:** Once imported, you can explore the available API requests and send them to your running application.
-````
