@@ -11,7 +11,7 @@ services:
     environment:
       JWT_SECRET: ${JWT_SECRET}
       PORT: ${PORT}
-      MONGO_URI: ${MONGO_URI}
+      MONGO_URI: ${MONGO_DOCKER_URI}
     env_file:
       - .env
     volumes:
