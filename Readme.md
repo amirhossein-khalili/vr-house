@@ -1,4 +1,3 @@
-````markdown
 # VR House Project
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -31,6 +30,7 @@ This is test project for vr house
 git clone [https://github.com/amirhossein-khalili/vr-house.git](https://github.com/amirhossein-khalili/vr-house.git)
 cd vr-house
 ```
+
 ````
 
 ### 2. Environment Variables
@@ -128,3 +128,4 @@ If your project includes a backend API, you can test its endpoints using Postman
     - Upload the Postman collection JSON file.
 3.  **Configure Environment (if needed):** The collection might require a Postman environment to be set up with variables like `baseURL`. _<-- Specify if an environment setup is needed and provide details or an example environment file. -->_
 4.  **Run Requests:** Once imported, you can explore the available API requests and send them to your running application.
+````
