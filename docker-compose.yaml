@@ -1,4 +1,5 @@
 version: '3.8'
+
 services:
   web:
     stdin_open: true
@@ -7,26 +8,48 @@ services:
       dockerfile: Dockerfile
     ports:
       - '4000:4000'
+    environment:
+      JWT_SECRET: ${JWT_SECRET}
+      PORT: ${PORT}
+      MONGO_URI: ${MONGO_URI}
+    env_file:
+      - .env
     volumes:
-      - '/workspace/app/node_modules'
-      - './:/workspace/app'
+      - .:/app
+      - /app/node_modules
     depends_on:
       - mongo
-    # network_mode: service:mongo
+      - redis
+    networks:
+      - backend
 
   mongo:
     container_name: mongo
-    image: mongo
+    image: docker.arvancloud.ir/mongo
     volumes:
-      - ./mongoDB_data:/data
+      - ./mongodata:/data/mongo
     ports:
       - '27017:27017'
+    networks:
+      - backend
 
   redis:
-    image: redis
-    command: ['redis-server', '--bind', 'redis', '--port', '6379']
-    # ports:
-    #   - "6379:6379"
-    # volumes:
-    #   - "./data:/data"
-    # command: redis-server --appendonly yes
+    image: docker.arvancloud.ir/redis:7.4.2
+    container_name: redis
+    ports:
+      - '6379:6379'
+    healthcheck:
+      test: ['CMD', 'redis-cli', 'ping']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - backend
+
+networks:
+  backend:
+    driver: bridge
+
+volumes:
+  mongodata: {}
+  app: {}

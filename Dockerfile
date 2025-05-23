@@ -1,12 +1,19 @@
-FROM node:13
+FROM docker.arvancloud.ir/node:18
 
 WORKDIR /app
 
-COPY package*. ./
+# Be explicit with copying package files
+COPY package.json ./
 
-RUN npm install 
+COPY package-lock.json* ./ 
 
-COPY . . 
+
+RUN ls -la ./
+# --- End Debugging ---
+
+RUN npm install
+
+COPY . .
 
 ENV PORT=4000
 
